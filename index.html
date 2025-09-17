@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Greeting</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .greeting {
+      text-align: center;
+      background: white;
+      padding: 40px 60px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      animation: pop 1s ease;
+    }
+    .greeting h1 {
+      color: #ff6f61;
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+    .greeting p {
+      color: #444;
+      font-size: 1.2em;
+    }
+    @keyframes pop {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="greeting">
+    <h1>🌞 Hello, Sunshine! 🌈</h1>
+    <p>Wishing you a bright, happy, and wonderful day!</p>
+  </div>
+</body>
+</html>
