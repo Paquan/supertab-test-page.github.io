@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Happy Greeting</title>
+  <title>Greeting</title>
   <style>
     body {
-      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      font-family: Arial, Helvetica, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -15,31 +15,31 @@
     }
     .greeting {
       text-align: center;
-      background: white;
+      background: #ffffff;
       padding: 40px 60px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      animation: pop 1s ease;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease;
     }
     .greeting h1 {
-      color: #ff6f61;
-      font-size: 3em;
+      color: #2c3e50;
+      font-size: 2.5em;
       margin-bottom: 10px;
     }
     .greeting p {
-      color: #444;
+      color: #555;
       font-size: 1.2em;
     }
-    @keyframes pop {
-      0% { transform: scale(0.8); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
   <div class="greeting">
-    <h1>🌞 Hello, Sunshine! 🌈</h1>
-    <p>Wishing you a bright, happy, and wonderful day!</p>
+    <h1>Hello and Welcome!</h1>
+    <p>Hope you’re having a great day.</p>
   </div>
 </body>
 </html>
