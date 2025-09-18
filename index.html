@@ -59,29 +59,27 @@
       // Insert your code to handle when user has prior entitlement when accessing the page
       console.log("User has prior entitlement", initialState.priorEntitlement);
     } else {
+
       // Show the paywall
-      let result = await show();
+      function showPaywall() {
+        const { priorEntitlement, purchase, purchasedOffering } = await show();
+  
+        if (priorEntitlement) {
+          // Insert your code to handle when user has prior entitlement
+          console.log("User has prior entitlement", priorEntitlement);
+        } else if (purchase && purchase.status === "completed") {
+          // Insert your code to handle when user purchases an offering
+          console.log("Purchase completed!", purchase);
+        } else {
+          // Insert your code to handle when user abandons the flow without purchase or prior entitlement
+          console.log("Purchase canceled!");
+          window.location.href = "https://paquan.github.io/supertab-test-page.github.io/dont-wanna-pay";
+        }
+      }
 
       // Handle page show event to cover bfcache scenarios
-      addEventListener("pageshow", async (e) => {
-        if (e.persisted) {
-          result = await show();
-        }
-      });
+      addEventListener("pageshow", async (e) => e.persisted && showPaywall());
 
-      const { priorEntitlement, purchase, purchasedOffering } = result;
-
-      if (priorEntitlement) {
-        // Insert your code to handle when user has prior entitlement
-        console.log("User has prior entitlement", priorEntitlement);
-      } else if (purchase && purchase.status === "completed") {
-        // Insert your code to handle when user purchases an offering
-        console.log("Purchase completed!", purchase);
-      } else {
-        // Insert your code to handle when user abandons the flow without purchase or prior entitlement
-        console.log("Purchase canceled!");
-        window.location.href = "https://paquan.github.io/supertab-test-page.github.io/dont-wanna-pay";
-      }
     }
   </script>
 </body>
