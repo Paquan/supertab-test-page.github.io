@@ -77,9 +77,12 @@
         }
       }
 
+      // Initially show the Paywall
+      showPaywall()
+
       // Handle page show event to cover bfcache scenarios
       addEventListener("pageshow", async (e) => e.persisted && showPaywall());
-
+      
     }
   </script>
 </body>
