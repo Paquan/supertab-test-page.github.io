@@ -35,7 +35,47 @@
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
-  <script src="https://cdn.jsdelivr.net/gh/Paquan/supertab-js-test-script@v1.0.1/supertab.js"></script>
+  <script type="module">
+    import { Supertab } from "https://js.supertab.co/v3/sdk.js";
+
+    // Initialize Supertab client
+    const supertabClient = new Supertab({ clientId: "test_client.99cd178f-0f86-4356-93e6-2840159da7b9" });
+
+    // Create the paywall
+    const { initialState, show } = await supertabClient.createPaywall({
+      experienceId: "experience.7edff442-8078-44af-81d5-f67d23889d1f"
+    });
+
+    // Check if the user has prior entitlement
+    if (initialState.priorEntitlement) {
+      // Insert your code to handle when user has prior entitlement when accessing the page
+      console.log("User has prior entitlement", initialState.priorEntitlement);
+    } else {
+      // Show the paywall
+      let result = await show();
+
+      // Handle page show event to cover bfcache scenarios
+      addEventListener("pageshow", async (e) => {
+        if (e.persisted) {
+          result = await show();
+        }
+      });
+
+      const { priorEntitlement, purchase, purchasedOffering } = result;
+
+      if (priorEntitlement) {
+        // Insert your code to handle when user has prior entitlement
+        console.log("User has prior entitlement", priorEntitlement);
+      } else if (purchase && purchase.status === "completed") {
+        // Insert your code to handle when user purchases an offering
+        console.log("Purchase completed!", purchase);
+      } else {
+        // Insert your code to handle when user abandons the flow without purchase or prior entitlement
+        console.log("Purchase canceled!");
+        window.location.href = "https://paquan.github.io/supertab-test-page.github.io/dont-wanna-pay";
+      }
+    }
+  </script>
 </head>
 <body>
   <div class="greeting">
