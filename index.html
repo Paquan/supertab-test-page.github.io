@@ -61,7 +61,7 @@
     } else {
 
       // Show the paywall
-      function showPaywall() {
+      const showPaywall = async () => {
         const { priorEntitlement, purchase, purchasedOffering } = await show();
   
         if (priorEntitlement) {
@@ -78,7 +78,7 @@
       }
 
       // Initially show the Paywall
-      showPaywall()
+      await showPaywall()
 
       // Handle page show event to cover bfcache scenarios
       addEventListener("pageshow", async (e) => e.persisted && showPaywall());
